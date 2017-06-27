@@ -66,7 +66,6 @@ def main():
             rev = get_rc(spl[1])
             dict[rev] = spl[0]
     inforead.close()
-    print dict
 
     #step2: read barcode file
     if (sys.argv[2][-2:] == 'gz'):
@@ -79,6 +78,7 @@ def main():
         if( n % 4 == 3):
             seq.append(line.strip())
             check_barcode(seq,dict,ids)
+            print line.strip()
             seq = []
         else:
             seq.append(line.strip())

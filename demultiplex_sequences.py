@@ -66,7 +66,7 @@ def main():
             rev = get_rc(spl[1])
             dict[rev] = spl[0]
     inforead.close()
-    
+    print dict
 
     #step2: read barcode file
     if (sys.argv[2][-2:] == 'gz'):
@@ -83,7 +83,7 @@ def main():
         else:
             seq.append(line.strip())
     barread.close()
-    
+    print ids
     #step3: read raw-read file
     if (sys.argv[3][-2:] == 'gz'):
         seqread = gzip.open(args.input_file,'r')

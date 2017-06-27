@@ -21,6 +21,7 @@ def get_parser():
     parser.add_argument('-i', '--in', dest = "input_file", help='input_file')
     parser.add_argument('-d', '--direction', dest = "direction", help='direction')
     parser.add_argument('-o', '--out', dest = "out_dir", help='output_directory')
+    parser.add_argument('--reverse', action='store_true', dest = "reverse_comp", default = False, help='reverse compelementary')
     return parser
 
 def add_seq(seq,ids,result):
@@ -51,9 +52,8 @@ def check_barcode(seq,dict,result):
 
 def main():
     parser = get_parser()
-
     args = parser.parse_args()
-    print args.mapping_file
+    
     #step1: read mapping file
     dict = {}
     inforead = open(args.mapping_file,'r')
@@ -62,9 +62,12 @@ def main():
             continue
         else:
             spl = line.strip().split('\t')
-            #dict[spl[1]] = spl[0]
-            rev = get_rc(spl[1])
-            dict[rev] = spl[0]
+
+            if args.reverse_comp:
+                rev = get_rc(spl[1])
+                dict[rev] = spl[0]
+            else:
+                dict[spl[1]] = spl[0] 
     inforead.close()
 
     #step2: read barcode file

@@ -1,5 +1,25 @@
 # qiime_tools
-qiime_tools
+This repository have collection of tools to process amplicon data.
+
+### Demultiplex sequences
+You need to demultiplex sequences if you get your sequence like this:
+```
+Undetermined_S0_L001_I1_001.fastq.gz
+Undetermined_S0_L001_R1_001.fastq.gz
+Undetermined_S0_L001_R2_001.fastq.gz
+```
+Here, you can use demultiplex_sequences.py to demeltiplex. You will need mapping file (Same file that Qiime reqires)
+
+#### Usage
+Note: if your barcode matches in reverse complementary, then use option --reverse_complement 
+```
+python demultiplex_sequences.py -m mapping_file -b barcode_file -f forward_file -r reverse_file -o output_directory --reverse_complement
+```
+
+#### Example
+```
+python demultiplex_sequences.py -m mapping.txt -b Undetermined_S0_L001_I1_001.fastq.gz -f Undetermined_S0_L001_R1_001.fastq.gz -r Undetermined_S0_L001_R2_001.fastq.gz -o demultiplexed
+```
 
 ### get_observation.py
 this script get observation after run split_libraries.py

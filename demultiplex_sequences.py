@@ -16,11 +16,11 @@ import argparse
 def get_parser():
     parser = argparse.ArgumentParser(description='this script separate fastq file into samples')
 
-    parser.add_argument('-m', '--map', dest = "mapping_file", help='mapping file')
-    parser.add_argument('-b', '--barcode', dest = "barcode_file", help='barcode file')
-    parser.add_argument('-f', '--forward', dest = "input_file_f", help='input_file_forward')
-    parser.add_argument('-r', '--reverse', dest = "input_file_r", help='input_file_reverse')
-    parser.add_argument('-o', '--out', dest = "out_dir", help='output_directory')
+    parser.add_argument('-m', '--map', dest = "mapping_file", required=True, help='mapping file')
+    parser.add_argument('-b', '--barcode', dest = "barcode_file", required=True, help='barcode file')
+    parser.add_argument('-f', '--forward', dest = "input_file_f", required=True, help='input_file_forward')
+    parser.add_argument('-r', '--reverse', dest = "input_file_r", required=True, help='input_file_reverse')
+    parser.add_argument('-o', '--out', dest = "out_dir", default="demultiplexed", help='output_directory')
     parser.add_argument('--reverse_complement', action='store_true', dest = "reverse_comp", default = False, help='reverse compelementary')
     return parser
 

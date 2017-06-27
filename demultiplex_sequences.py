@@ -65,7 +65,7 @@ def main():
             spl = line.strip().split('\t')
             dict[spl[1]] = spl[0]
             #rev = get_rc(spl[1])
-            dict[rev] = spl[0]
+            #dict[rev] = spl[0]
     inforead.close()
 
     #step2: read barcode file

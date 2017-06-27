@@ -2,8 +2,8 @@
 
 """
 # this script separate fastq file into samples
-#usage: python demultiplex_sequences.py mapping_file barcode_file fastq R1/R2 directory 
-#example python demultiplex_sequences.py -m mapping.txt -b Undetermined_S0_L001_I1_001.fastq.gz -i Undetermined_S0_L001_R1_001.fastq.gz -d R1 -o R1
+#usage: python demultiplex_sequences.py -m mapping_file -b barcode_file -f forward_file -r reverse_file -o output_directory --reverse_complement
+#example: python qiime_tools/demultiplex_sequences.py -m mapping_corrected.txt -b Undetermined_S0_L001_I1_001.fastq.gz -f Undetermined_S0_L001_R1_001.fastq.gz -r Undetermined_S0_L001_R2_001.fastq.gz -o demultiplexed
 """
 
 
@@ -20,7 +20,6 @@ def get_parser():
     parser.add_argument('-b', '--barcode', dest = "barcode_file", help='barcode file')
     parser.add_argument('-f', '--forward', dest = "input_file_f", help='input_file_forward')
     parser.add_argument('-r', '--reverse', dest = "input_file_r", help='input_file_reverse')
-    parser.add_argument('-d', '--direction', dest = "direction", help='direction')
     parser.add_argument('-o', '--out', dest = "out_dir", help='output_directory')
     parser.add_argument('--reverse_complement', action='store_true', dest = "reverse_comp", default = False, help='reverse compelementary')
     return parser
@@ -68,6 +67,13 @@ def read_raw_sequence(filename, ids):
     seqread.close()
     return result
 
+def write_file(result, loc, di):
+    for item in result.items():
+        fwrite = open("./"+loc+"/"+item[0]+"."+di+".fastq",'w')
+        for x in  item[1]:
+            fwrite.write(x+'\n')
+        fwrite.close()
+
 def main():
     parser = get_parser()
     args = parser.parse_args()
@@ -105,19 +111,13 @@ def main():
     barread.close()
     
     directions = ['R1','R2']
-    #step3: read raw-read file
-    result = read_raw_sequence(args.input_file_f, ids)
-
-
-    #step4: write files
-    di = 'R1'
     loc = args.out_dir
     os.mkdir(loc)
-    for item in result.items():
-        fwrite = open("./"+loc+"/"+item[0]+"."+di+".fastq",'w')
-        for x in  item[1]:
-            fwrite.write(x+'\n')
-        fwrite.close()
+    for di in directions:
+        #step3: read raw-read file
+        result = read_raw_sequence(args.input_file_f, ids)
+        #step4: write files
+        def write_file(result, loc, di):
 
 if __name__ == '__main__':
     main()

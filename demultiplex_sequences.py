@@ -111,11 +111,14 @@ def main():
     barread.close()
     
     directions = ['R1','R2']
+    files = [args.input_file_f, args.input_file_r]
     loc = args.out_dir
     os.mkdir(loc)
-    for di in directions:
+    for i in range(0,2):
+        di = directions[i]
+        fi = files[i]
         #step3: read raw-read file
-        result = read_raw_sequence(args.input_file_f, ids)
+        result = read_raw_sequence(fi, ids)
         #step4: write files
         write_file(result, loc, di)
 

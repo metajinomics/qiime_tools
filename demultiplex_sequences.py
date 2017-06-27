@@ -117,7 +117,7 @@ def main():
         #step3: read raw-read file
         result = read_raw_sequence(args.input_file_f, ids)
         #step4: write files
-        def write_file(result, loc, di):
+        write_file(result, loc, di):
 
 if __name__ == '__main__':
     main()

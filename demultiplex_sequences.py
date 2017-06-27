@@ -106,7 +106,7 @@ def main():
     
     directions = ['R1','R2']
     #step3: read raw-read file
-    result = read_raw_sequence(args.input_file_f, ids):
+    result = read_raw_sequence(args.input_file_f, ids)
 
 
     #step4: write files

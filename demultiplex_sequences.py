@@ -68,7 +68,7 @@ def main():
     inforead.close()
 
     #step2: read barcode file
-    if (sys.argv[2][-2:] == 'gz'):
+    if (args.barcode_file[-2:] == 'gz'):
         barread = gzip.open(args.barcode_file,'r')
     else:
         barread = open(args.barcode_file,'r')
@@ -78,14 +78,13 @@ def main():
         if( n % 4 == 3):
             seq.append(line.strip())
             check_barcode(seq,dict,ids)
-            print line.strip()
             seq = []
         else:
             seq.append(line.strip())
     barread.close()
-    print ids
+    
     #step3: read raw-read file
-    if (sys.argv[3][-2:] == 'gz'):
+    if (args.input_file[-2:] == 'gz'):
         seqread = gzip.open(args.input_file,'r')
     else:
         seqread = open(args.input_file,'r')

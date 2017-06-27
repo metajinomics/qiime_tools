@@ -14,7 +14,7 @@ import gzip
 import argparse
 
 def get_parser():
-    parser = argparse.ArgumentParser(description='Process some integers.')
+    parser = argparse.ArgumentParser(description='this script separate fastq file into samples')
 
     parser.add_argument('-m', '--map', dest = "mapping_file", help='mapping file')
     parser.add_argument('-b', '--barcode', dest = "barcode_file", help='barcode file')
@@ -63,8 +63,8 @@ def main():
             continue
         else:
             spl = line.strip().split('\t')
-            #dict[spl[1]] = spl[0]
-            rev = get_rc(spl[1])
+            dict[spl[1]] = spl[0]
+            #rev = get_rc(spl[1])
             dict[rev] = spl[0]
     inforead.close()
 

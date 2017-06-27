@@ -22,7 +22,7 @@ def get_parser():
     parser.add_argument('-r', '--reverse', dest = "input_file_r", help='input_file_reverse')
     parser.add_argument('-d', '--direction', dest = "direction", help='direction')
     parser.add_argument('-o', '--out', dest = "out_dir", help='output_directory')
-    parser.add_argument('--reverse', action='store_true', dest = "reverse_comp", default = False, help='reverse compelementary')
+    parser.add_argument('--reverse_complement', action='store_true', dest = "reverse_comp", default = False, help='reverse compelementary')
     return parser
 
 def add_seq(seq,ids,result):

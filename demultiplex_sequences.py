@@ -3,7 +3,7 @@
 """
 # this script separate fastq file into samples
 #usage: python demultiplex_sequences.py mapping_file barcode_file fastq R1/R2 directory 
-
+#example python demultiplex_sequences.py -m mapping.txt -b Undetermined_S0_L001_I1_001.fastq.gz -i Undetermined_S0_L001_R1_001.fastq.gz -d R1 -o R1
 """
 
 
@@ -53,8 +53,7 @@ def main():
     parser = get_parser()
 
     args = parser.parse_args()
-    
-
+    print args.mapping_file
     #step1: read mapping file
     dict = {}
     inforead = open(args.mapping_file,'r')
@@ -63,10 +62,11 @@ def main():
             continue
         else:
             spl = line.strip().split('\t')
-            dict[spl[1]] = spl[0]
-            #rev = get_rc(spl[1])
-            #dict[rev] = spl[0]
+            #dict[spl[1]] = spl[0]
+            rev = get_rc(spl[1])
+            dict[rev] = spl[0]
     inforead.close()
+    
 
     #step2: read barcode file
     if (sys.argv[2][-2:] == 'gz'):

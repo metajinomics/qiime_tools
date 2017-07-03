@@ -15,6 +15,6 @@ files = [f for f in listdir(path) if isfile(join(path,f))]
 
 print "#SampleID\tInputFileName"
 for file in files:
-    sample_id = file.replace('.fastq','')
+    sample_id = file.replace('.fasta','')
     print sample_id + '\t' + file
 

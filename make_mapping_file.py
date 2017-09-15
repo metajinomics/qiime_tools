@@ -13,9 +13,13 @@ from os.path import isfile, join
 path = sys.argv[1]
 files = [f for f in listdir(path) if isfile(join(path,f))]
 
-print "#SampleID\tInputFileName"
+print "#SampleID\tBarcodeSequence\tLinkerPrimerSequence\tDescription\tInputFileName"
+BarcodeSequence = "NNNNNNNNNNNN"
+LinkerPrimerSequence = "NNNNNNNNNNNNNNNNNNNNN"
+Description = "no_description"
 for file in files:
     sample_name = file.replace('.fasta','')
     sample_id = sample_name.replace('_','.')
-    print sample_id + '\t' + file
+    result = [sample_id, BarcodeSequence, LinkerPrimerSequence, Description, file]
+    print '\t'.join(result)
 

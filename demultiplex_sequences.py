@@ -69,7 +69,7 @@ def read_raw_sequence(filename, ids):
 
 def write_file(result, loc, di):
     for item in result.items():
-        fwrite = open("./"+loc+"/"+item[0]+"."+di+".fastq",'w')
+        fwrite = gzip.open("./"+loc+"/"+item[0]+"_L001_"+di+"_001.fastq.gz",'w')
         for x in  item[1]:
             fwrite.write(x+'\n')
         fwrite.close()

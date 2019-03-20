@@ -30,7 +30,7 @@ def main():
         inputfilename = item[0]+".fasta"
         re1 = item[0].replace('_','.')
         sampleid = re1.replace('-','.')
-        reult = [sampleid, BarcodeSequence, LinkerPrimerSequence, inputfilename, Description]
+        result = [sampleid, BarcodeSequence, LinkerPrimerSequence, inputfilename, Description]
         print('\t'.join(result))
 
 if __name__ == '__main__':

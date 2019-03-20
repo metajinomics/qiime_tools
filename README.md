@@ -10,10 +10,16 @@ Undetermined_S0_L001_R2_001.fastq.gz
 ```
 Here, you can use demultiplex_sequences.py to demeltiplex. You will need mapping file (Same file that Qiime reqires)
 
+#### clean mapping file
+```
+python /mnt/research/germs/softwares/qiime_tools/clean_mapping_file.py 190103_Mapping_File_GermWater_Tott_16SF_20181219.txt > clean.mappingfile.txt
+```
+
+
 #### Usage
 Note: if your barcode matches in reverse complementary, then use option --reverse_complement 
 ```
-python demultiplex_sequences.py -m mapping_file -b barcode_file -f forward_file -r reverse_file -o output_directory --reverse_complement
+python2 /mnt/research/germs/softwares/qiime_tools/demultiplex_sequences.py -m clean.mappingfile.txt -b Undetermined_S0_L001_I1_001.fastq.gz -f Undetermined_S0_L001_R1_001.fastq.gz -r Undetermined_S0_L001_R2_001.fastq.gz -o demeltiplex
 ```
 
 #### Example

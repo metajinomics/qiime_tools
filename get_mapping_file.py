@@ -15,7 +15,7 @@ def main():
         if "_L001_" in file:
             spl = file.split("_L001_")
             temp = samplelist.get(spl[0],[])
-            temp..append(spl[1])
+            temp.append(spl[1])
             samplelist[spl[0]] = temp
         else:
             print ("check file name")

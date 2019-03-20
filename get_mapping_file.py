@@ -14,7 +14,9 @@ def main():
     for file in sys.argv[1:]:
         if "_L001_" in file:
             spl = file.split("_L001_")
-            samplelist[spl[0]] = samplelist.get(spl[0],[]).append(spl[1])
+            temp = samplelist.get(spl[0],[])
+            temp..append(spl[1])
+            samplelist[spl[0]] = temp
         else:
             print ("check file name")
 

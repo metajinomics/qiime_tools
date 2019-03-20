@@ -31,7 +31,7 @@ def main():
         re1 = item[0].replace('_','.')
         sampleid = re1.replace('-','.')
         reult = [sampleid, BarcodeSequence, LinkerPrimerSequence, inputfilename, Description]
-        print('\t'.join(result)
+        print('\t'.join(result))
 
 if __name__ == '__main__':
     main()

@@ -20,8 +20,18 @@ def main():
         else:
             print ("check file name")
 
-    print(samplelist)
 
+    print ("#SampleID\tBarcodeSequence\tLinkerPrimerSequence\tInputFileName\tDescription")
+    BarcodeSequence = "NNNNNNNNNNNN"
+    LinkerPrimerSequence = "NNNNNNNNNNNNNNNNNNNNN"
+    Description = "no_description"
+
+    for item in samplelist.items():
+        inputfilename = item[0]+".fasta"
+        re1 = item[0].replace('_','.')
+        sampleid = re1.replace('-','.')
+        reult = [sampleid, BarcodeSequence, LinkerPrimerSequence, inputfilename, Description]
+        print('\t'.join(result)
 
 if __name__ == '__main__':
     main()

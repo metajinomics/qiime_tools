@@ -15,7 +15,7 @@ def main():
         if "_L001_" in file:
             spl = file.split("_L001_")
         else:
-            print "check file name"
+            print ("check file name")
 
 
 
